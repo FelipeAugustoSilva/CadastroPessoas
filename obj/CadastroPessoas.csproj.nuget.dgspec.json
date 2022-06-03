@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Felipe\\Desktop\\Senai\\CadastroPessoas\\CadastroPessoas.csproj": {}
+    "C:\\Users\\Felipe\\Desktop\\Senai\\Atividades\\CadastroPessoas\\CadastroPessoas.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Felipe\\Desktop\\Senai\\CadastroPessoas\\CadastroPessoas.csproj": {
+    "C:\\Users\\Felipe\\Desktop\\Senai\\Atividades\\CadastroPessoas\\CadastroPessoas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Felipe\\Desktop\\Senai\\CadastroPessoas\\CadastroPessoas.csproj",
+        "projectUniqueName": "C:\\Users\\Felipe\\Desktop\\Senai\\Atividades\\CadastroPessoas\\CadastroPessoas.csproj",
         "projectName": "CadastroPessoas",
-        "projectPath": "C:\\Users\\Felipe\\Desktop\\Senai\\CadastroPessoas\\CadastroPessoas.csproj",
+        "projectPath": "C:\\Users\\Felipe\\Desktop\\Senai\\Atividades\\CadastroPessoas\\CadastroPessoas.csproj",
         "packagesPath": "C:\\Users\\Felipe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Felipe\\Desktop\\Senai\\CadastroPessoas\\obj\\",
+        "outputPath": "C:\\Users\\Felipe\\Desktop\\Senai\\Atividades\\CadastroPessoas\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Felipe\\AppData\\Roaming\\NuGet\\NuGet.Config"

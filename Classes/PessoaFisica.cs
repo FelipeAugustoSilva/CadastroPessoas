@@ -2,15 +2,15 @@ using CadastroPessoas.Interfaces;
 
 namespace CadastroPessoas.Classes
 {
-    public class PessoaFisica : Pessoa , IPessoaFisica
+    public class PessoaFisica : Pessoa, IPessoaFisica
     {
         public string? Cpf { get; set; }
 
         public DateTime dataNasc { get; set; }
-        
-        
-        
-        
+
+
+
+
 
         public override float PagarImposto(float rendimento)
         {
@@ -19,7 +19,47 @@ namespace CadastroPessoas.Classes
 
         public bool ValidarDataNasc(DateTime dataNasc)
         {
-            throw new NotImplementedException();
+            DateTime dataAtual = DateTime.Today;
+
+            double anos = (dataAtual - dataNasc).TotalDays / 365;
+
+            //Console.WriteLine(anos);
+
+            //return true;
+
+            if (anos >= 18)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool ValidarDataNasc(string dataNasc)
+        {
+
+            DateTime dataConvertida;
+
+            if (DateTime.TryParse(dataNasc, out dataConvertida))
+            {
+                DateTime dataAtual = DateTime.Today;
+
+                double anos = (dataAtual - dataConvertida).TotalDays / 365;
+
+                //Console.WriteLine(anos);
+
+                //return true;
+
+                if (anos >= 18)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+
+            return false;
+
         }
     }
 }
