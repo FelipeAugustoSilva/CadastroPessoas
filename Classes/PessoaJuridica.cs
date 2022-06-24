@@ -12,7 +12,21 @@ namespace CadastroPessoas.Classes
 
         public override float PagarImposto(float rendimento)
         {
-            throw new NotImplementedException();
+            if (rendimento <= 3000)
+            {
+                return rendimento / 100 * 3;
+
+            }else if(rendimento <= 6000)
+            {
+                return rendimento / 100 * 6;
+
+            }else if(rendimento <= 10000)
+            {
+                return rendimento / 100 * 10;
+            }else
+            {
+                return rendimento /100 * 12;
+            }
         }
 
 
