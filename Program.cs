@@ -1,4 +1,5 @@
-﻿using CadastroPessoas.Classes;
+﻿using System.Text.RegularExpressions;
+using CadastroPessoas.Classes;
 
 Console.Clear();
 Console.WriteLine(@$"
@@ -200,8 +201,31 @@ Imposto a ser pago: {metodosPf.PagarImposto(cadaPessoa.Rendimento).ToString("C")
                         Console.WriteLine($"Digite a razão social");
                         novaPj.RazaoSocial = Console.ReadLine();
 
-                        Console.WriteLine($"Digite o numero do CNPJ(APENAS NUMEROS)");
+                        //Console.WriteLine($"Digite o numero do CNPJ(APENAS NUMEROS)");
+                        bool cnpjValido;
+                        do
+                        {
+                            Console.WriteLine($"Digite o CNPJ (APENAS NÚMEROS)");
+                            string? cnpj = Console.ReadLine();
+
+                            cnpjValido = metodosPj.ValidarCnpj(cnpj);
+
+                            if (cnpjValido)
+                            {
+                                novaPj.Cnpj = cnpj;
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.WriteLine($"CNPJ inválido. Por favor, digite um CNPJ válido");
+                                Console.ResetColor();
+                                Thread.Sleep(3000);
+                            }
+                        } while (cnpjValido == false);
+
                         novaPj.Cnpj = Console.ReadLine();
+
+
 
                         Console.WriteLine($"Digite o rendimento mensal(APENAS NUMEROS)");
                         novaPj.Rendimento = float.Parse(Console.ReadLine());
