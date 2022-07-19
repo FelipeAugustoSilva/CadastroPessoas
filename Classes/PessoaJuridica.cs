@@ -9,6 +9,10 @@ namespace CadastroPessoas.Classes
 
         public string? RazaoSocial { get; set; }
 
+        public string Caminho { get; private set; } = "Database/PessoaJuridica.csv";
+        
+        
+
 
         public override float PagarImposto(float rendimento)
         {
@@ -61,8 +65,43 @@ namespace CadastroPessoas.Classes
             }
             return false;
 
-
-
+      
         }
+
+        public void Inserir(PessoaJuridica pj){
+
+            Utils.VerificarPastaArquivo(Caminho);
+
+            string[] pjStrings = {$"{pj.Name},{pj.Cnpj},{pj.RazaoSocial}"};
+
+            File.AppendAllLines(Caminho, pjStrings);
+        }
+
+        public List<PessoaJuridica> LerArquivo(){
+
+            List<PessoaJuridica> listaPj = new List<PessoaJuridica>();
+
+            string[] linhas = File.ReadAllLines(Caminho);
+
+            foreach (string cadaLinha in linhas)
+            {
+                string [] atributos = cadaLinha.Split(",");
+
+                PessoaJuridica cadaPj = new PessoaJuridica();
+
+                cadaPj.Name = atributos[0];
+                cadaPj.Cnpj = atributos[1];
+                cadaPj.RazaoSocial = atributos[2];
+
+                listaPj.Add(cadaPj);
+          
+            }
+       
+            return listaPj;
+        }
+
+
+
+
     }
 }

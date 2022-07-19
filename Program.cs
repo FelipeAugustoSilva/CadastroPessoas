@@ -60,59 +60,71 @@ do
                         Console.WriteLine($"Digite o nome da pessoa fisica que deseja cadastrar");
                         novaPf.Name = Console.ReadLine();
 
-                        bool dataValida;
-                        do
+                        // PARA COMENTAR, SELECIONA O TEXTO E APERTA CTRL + ;
+                        // bool dataValida;
+                        // do
+                        // {
+                        //     Console.WriteLine($"Digite a data de nascimento Ex:DD/MM/AAAA");
+                        //     string? dataNascimento = Console.ReadLine();
+
+                        //     dataValida = metodosPf.ValidarDataNasc(dataNascimento);
+
+                        //     if (dataValida)
+                        //     {
+                        //         DateTime DataConvertida;
+                        //         DateTime.TryParse(dataNascimento, out DataConvertida);
+                        //         novaPf.dataNasc = DataConvertida;
+                        //     }
+                        //     else
+                        //     {
+                        //         Console.ForegroundColor = ConsoleColor.DarkRed;
+                        //         Console.WriteLine($"Data digitada invalida, por favor digite uma data valida");
+                        //         Console.ResetColor();
+                        //         Thread.Sleep(2000);
+                        //     }
+                        // } while (dataValida == false);
+
+                        // Console.WriteLine($"Digite o numero do CPF");
+                        // novaPf.Cpf = Console.ReadLine();
+
+                        // Console.WriteLine($"Digite o rendimento mensal(DIGITR SOMENTE NUMEROS)");
+                        // novaPf.Rendimento = float.Parse(Console.ReadLine());
+
+                        // Console.WriteLine($"Digite o logradouro");
+                        // novoEndPf.logradouro = Console.ReadLine();
+
+                        // Console.WriteLine($"Digite o numero");
+                        // novoEndPf.numero = int.Parse(Console.ReadLine());
+
+                        // Console.WriteLine($"Digite o complemento");
+                        // novoEndPf.complemento = Console.ReadLine();
+
+                        // Console.WriteLine($"Este endereco é comercial? S/N");
+                        // string endCom = Console.ReadLine().ToUpper();
+
+                        // if (endCom == "S")
+                        // {
+                        //     novoEndPf.endComercial = true;
+                        // }
+                        // else
+                        // {
+                        //     novoEndPf.endComercial = false;
+                        // }
+
+                        // novaPf.Endereco = novoEndPf;
+
+                        // listaPf.Add(novaPf);
+
+
+                        //StreamWriter sw = new StreamWriter($"{novaPf.Name}.txt");
+                        //sw.WriteLine(novaPf.Name);
+                        //sw.Close();
+
+                        using (StreamWriter sw = new StreamWriter($"{novaPf.Name}.txt"))
                         {
-                            Console.WriteLine($"Digite a data de nascimento Ex:DD/MM/AAAA");
-                            string? dataNascimento = Console.ReadLine();
-
-                            dataValida = metodosPf.ValidarDataNasc(dataNascimento);
-
-                            if (dataValida)
-                            {
-                                DateTime DataConvertida;
-                                DateTime.TryParse(dataNascimento, out DataConvertida);
-                                novaPf.dataNasc = DataConvertida;
-                            }
-                            else
-                            {
-                                Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine($"Data digitada invalida, por favor digite uma data valida");
-                                Console.ResetColor();
-                                Thread.Sleep(2000);
-                            }
-                        } while (dataValida == false);
-
-                        Console.WriteLine($"Digite o numero do CPF");
-                        novaPf.Cpf = Console.ReadLine();
-
-                        Console.WriteLine($"Digite o rendimento mensal(DIGITR SOMENTE NUMEROS)");
-                        novaPf.Rendimento = float.Parse(Console.ReadLine());
-
-                        Console.WriteLine($"Digite o logradouro");
-                        novoEndPf.logradouro = Console.ReadLine();
-
-                        Console.WriteLine($"Digite o numero");
-                        novoEndPf.numero = int.Parse(Console.ReadLine());
-
-                        Console.WriteLine($"Digite o complemento");
-                        novoEndPf.complemento = Console.ReadLine();
-
-                        Console.WriteLine($"Este endereco é comercial? S/N");
-                        string endCom = Console.ReadLine().ToUpper();
-
-                        if (endCom == "S")
-                        {
-                            novoEndPf.endComercial = true;
+                            sw.WriteLine(novaPf.Name);
                         }
-                        else
-                        {
-                            novoEndPf.endComercial = false;
-                        }
 
-                        novaPf.Endereco = novoEndPf;
-
-                        listaPf.Add(novaPf);
 
                         Console.ForegroundColor = ConsoleColor.DarkGreen;
                         Console.WriteLine($"Cadastro realizado com sucesso");
@@ -123,26 +135,48 @@ do
                     case "2":
                         Console.Clear();
 
-                        if (listaPf.Count > 0)
-                        {
-                            foreach (PessoaFisica cadaPessoa in listaPf)
-                            {
-                                Console.Clear();
-                                Console.WriteLine(@$"
-Nome: {cadaPessoa.Name}
-Endereço: {cadaPessoa.Endereco.logradouro}, {cadaPessoa.Endereco.numero}
-Imposto a ser pago: {metodosPf.PagarImposto(cadaPessoa.Rendimento).ToString("C")}
-");
-                                Console.WriteLine("Aperte ENTER para continuar");
-                                Console.ReadLine();
+                        //                         if (listaPf.Count > 0)
+                        //                         {
+                        //                             foreach (PessoaFisica cadaPessoa in listaPf)
+                        //                             {
+                        //                                 Console.Clear();
+                        //                                 Console.WriteLine(@$"
+                        // Nome: {cadaPessoa.Name}
+                        // Endereço: {cadaPessoa.Endereco.logradouro}, {cadaPessoa.Endereco.numero}
+                        // Imposto a ser pago: {metodosPf.PagarImposto(cadaPessoa.Rendimento).ToString("C")}
+                        // ");
+                        //                                 Console.WriteLine("Aperte ENTER para continuar");
+                        //                                 Console.ReadLine();
 
+                        //                             }
+                        //                         }
+                        //                         else
+                        //                         {
+                        //                             Console.WriteLine($"Lista vazia");
+                        //                             Thread.Sleep(2000);
+                        //                         }
+
+                        //using (StreamReader sr = new StreamReader())
+                        //{
+
+                        //}
+
+                        using (StreamReader sr = new StreamReader("Felipe Augusto da Silva.txt"))
+                        {
+                            string linha;
+                            while ((linha = sr.ReadLine()) != null)
+                            {
+                                Console.WriteLine($"{linha}");
                             }
                         }
-                        else
-                        {
-                            Console.WriteLine($"Lista vazia");
-                            Thread.Sleep(2000);
-                        }
+
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine($"Aperte ENTER para continuar!");
+                        Console.ReadLine();
+                        Console.ResetColor();
+
+
+
                         break;
                     case "0":
                         break;
@@ -206,13 +240,13 @@ Imposto a ser pago: {metodosPf.PagarImposto(cadaPessoa.Rendimento).ToString("C")
                         do
                         {
                             Console.WriteLine($"Digite o CNPJ (APENAS NÚMEROS)");
-                            string? cnpj = Console.ReadLine();
+                            string? CnpjV = Console.ReadLine();
 
-                            cnpjValido = metodosPj.ValidarCnpj(cnpj);
+                            cnpjValido = metodosPj.ValidarCnpj(CnpjV);
 
                             if (cnpjValido)
                             {
-                                novaPj.Cnpj = cnpj;
+                                novaPj.Cnpj = CnpjV;
                             }
                             else
                             {
@@ -253,6 +287,16 @@ Imposto a ser pago: {metodosPf.PagarImposto(cadaPessoa.Rendimento).ToString("C")
 
                         novaPj.Endereco = novoEndPj;
 
+                        metodosPj.Inserir(novaPj);
+
+                        //List<PessoaJuridica> ListaPj = metodosPj.LerArquivo();
+                        //foreach (PessoaJuridica cadaItem in ListaPj)
+                        //{
+                            
+                        //}
+
+
+
                         listaPj.Add(novaPj);
 
                         Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -262,6 +306,8 @@ Imposto a ser pago: {metodosPf.PagarImposto(cadaPessoa.Rendimento).ToString("C")
                         break;
                     case "2":
                         Console.Clear();
+
+                        
 
                         if (listaPj.Count > 0)
                         {
@@ -286,6 +332,9 @@ Complemento: {cadaPessoaJ.Endereco.complemento}
                             Console.WriteLine($"Lista vazia");
                             Thread.Sleep(2000);
                         }
+
+                        
+
                         break;
                     case "0":
 
